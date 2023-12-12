@@ -21,7 +21,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
-
+import com.aventstack.extentreports.model.Media;
 import com.hm.enums.WaitStrategy;
 import com.hm.listeners.ExtentReportListener;
 
@@ -93,8 +93,7 @@ public class SeleniumWrapper {
 			element = waitForElement((By) locator, Strategy);
 		} else {
 
-			wait(5000);
-			element = getLocatorJs((String) locator);
+			element = waitForElement((String) locator, Strategy, timeOut);
 
 		}
 		return element;
@@ -172,6 +171,30 @@ public class SeleniumWrapper {
 			break;
 
 		default:
+			break;
+		}
+
+		return result;
+
+	}
+
+	public static synchronized WebElement waitForElement(String locator, WaitStrategy Strategy, int timeOut) {
+
+		WebElement result = null;
+
+		switch (Strategy) {
+		case CLICKABLE:
+
+			result = new WebDriverWait(localDriver.get(), Duration.ofSeconds(timeOut))
+					.until(ExpectedConditions.elementToBeClickable(getWebElement(locator)));
+			break;
+		case VISIBLE:
+			result = new WebDriverWait(localDriver.get(), Duration.ofSeconds(timeOut))
+					.until(ExpectedConditions.visibilityOf(getWebElement(locator)));
+			break;
+
+		default:
+			result = getLocatorJs((String) locator);
 			break;
 		}
 
@@ -550,6 +573,23 @@ public class SeleniumWrapper {
 
 	}
 
+	public static WebElement getWebElement(String locator) {
+
+		WebElement element = null;
+		if (locator.startsWith("//")) {
+			element = getlocalDriver().findElement(By.xpath(locator));
+		} else if (locator.startsWith("id")) {
+			element = getlocalDriver().findElement(By.id(locator));
+
+		} else if (locator.startsWith("class")) {
+			element = getlocalDriver().findElement(By.className(locator));
+		} else if (locator.startsWith("css")) {
+			element = getlocalDriver().findElement(By.cssSelector(locator));
+		}
+		return element;
+
+	}
+
 	public static synchronized void enterJsByValueByNamuber(Object locator, String value, String locatorName) {
 
 		WebElement element = webElementManger(locator, WaitStrategy.CLICKABLE,
@@ -586,9 +626,11 @@ public class SeleniumWrapper {
 
 	public static synchronized WebElement getLocatorJs(String locator) {
 
-		System.out.println("var element=document.evaluate(\"" + locator
-				+ "\", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null).snapshotItem(0); return element;");
-
+		/*
+		 * System.out.println("var element=document.evaluate(\"" + locator +
+		 * "\", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null).snapshotItem(0); return element;"
+		 * );
+		 */
 		return (WebElement) executor.get().executeScript("var element=document.evaluate(\"" + locator
 				+ "\", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null).snapshotItem(0); return element;");
 
@@ -691,13 +733,41 @@ public class SeleniumWrapper {
 
 			result = true;
 			highLightWebElementInScreenSchot(element, locatorName);
-			ExtentReportListener.test.get().info("Given Element is Visble -->" + locatorName,
+			ExtentReportListener.test.get().pass("Given Element is Visble -->" + locatorName,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 
 		} catch (Exception e) {
 
-			ExtentReportListener.test.get().info("Given Element is  Not Visble -->" + locatorName,
+			ExtentReportListener.test.get().fail("Given Element is  Not Visble -->" + locatorName,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
+		}
+
+		return result;
+
+	}
+
+	public static synchronized boolean isNotVisible(Object locator, String locatorName) {
+
+		boolean result = false;
+
+		try {
+
+			WebElement element = webElementManger(locator, WaitStrategy.VISIBLE, 10);
+
+			if (element == null) {
+				ExtentReportListener.test.get()
+						.pass("Given Element is  Not Visble and Step is Passed -->" + locatorName);
+				result = true;
+			} else {
+				ExtentReportListener.test.get().fail(
+						"Given Element is Should not be Visble but the Element is Visble hence failing the  Step -->"
+								+ locatorName);
+
+			}
+
+		} catch (Exception e) {
+			ExtentReportListener.test.get().pass("Given Element is  Not Visble and Step is Passed -->" + locatorName);
+			result = true;
 		}
 
 		return result;
@@ -738,6 +808,7 @@ public class SeleniumWrapper {
 		case "chrome":
 			ChromeOptions option = new ChromeOptions();
 			option.addArguments("incognito");
+			option.addArguments("--remote-allow-origins=*");
 			driver = new ChromeDriver(option);
 			localDriver.set(driver);
 			break;
@@ -858,7 +929,7 @@ public class SeleniumWrapper {
 		}
 
 	}
-	
+
 	public static String getUtcDate() {
 		LocalDateTime utcTime = LocalDateTime.now(ZoneOffset.UTC);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");

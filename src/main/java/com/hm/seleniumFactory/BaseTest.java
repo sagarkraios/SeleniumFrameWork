@@ -61,7 +61,7 @@ public class BaseTest {
 
 	}
 
-	@AfterClass
+	@AfterMethod
 	public void tearDown() {
 
 		SeleniumWrapper.closeBrowser();
