@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Open Cart Test Regression PW Suite">
+
+	<listeners>
+		<listener class-name="com.hm.listeners.ExtentReportListener" />
+
+	</listeners>
+
+	<test name="CultureKing">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="A">
+
+			</class>
+
+
+		</classes>
+
+	</test>
+
+
+
+</suite>

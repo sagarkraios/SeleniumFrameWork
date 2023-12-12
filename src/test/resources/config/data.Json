@@ -1,0 +1,24 @@
+{
+    "EnateTest": [
+        {
+            "URL": "https://hosting.enate.net/TMFSandbox/#/auth",
+            "UserName": "automation case6",
+            "Password": "Happy@123456",
+            "SheduleName": "QA_Automation_Schedule"
+        },
+        {
+            "URL": "https://hosting.enate.net/TMFSandbox/#/auth",
+            "UserName": "automation case6",
+            "Password": "Happy@123456",
+            "SheduleName": "QA_Automation_Schedule"
+        }
+    ],
+    "EnateTest2": [
+        {
+            "URL": "https://hosting.enate.net/TMFSandbox/#/auth",
+            "UserName": "automation case25",
+            "undefined": "Password",
+            "SheduleName": "QA_Automation_Schedule"
+        }
+    ]
+}
