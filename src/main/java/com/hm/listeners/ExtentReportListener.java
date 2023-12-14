@@ -16,7 +16,6 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
-
 import com.hm.seleniumFactory.SeleniumWrapper;
 
 public class ExtentReportListener implements ITestListener {
@@ -59,7 +58,6 @@ public class ExtentReportListener implements ITestListener {
 	public synchronized void onStart(ITestContext context) {
 		System.out.println("Test Suite started!");
 		SeleniumWrapper.init_properties();
-		
 
 	}
 
