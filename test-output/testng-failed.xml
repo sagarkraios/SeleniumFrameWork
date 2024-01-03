@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Open Cart Test Regression PW Suite]" guice-stage="DEVELOPMENT">
-  <listeners>
-    <listener class-name="com.hm.listeners.ExtentReportListener"/>
-  </listeners>
-  <test thread-count="5" name="CultureKing(failed)">
-    <parameter name="browser" value="chrome"/>
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
       <class name="A">
         <methods>
           <include name="setup"/>
           <include name="tearDown"/>
-          <include name="name" invocation-numbers="0"/>
+          <include name="name"/>
         </methods>
       </class> <!-- A -->
     </classes>
-  </test> <!-- CultureKing(failed) -->
-</suite> <!-- Failed suite [Open Cart Test Regression PW Suite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

@@ -7,13 +7,15 @@
   <test thread-count="5" name="CultureKing(failed)">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="A">
+      <class name="com.hm.tmf.kraios.WorkFlowAuditLogTest">
         <methods>
           <include name="setup"/>
           <include name="tearDown"/>
-          <include name="name" invocation-numbers="0"/>
+          <include name="verifyActivityTab" invocation-numbers="0"/>
+          <include name="setKeys"/>
+          <include name="setup2"/>
         </methods>
-      </class> <!-- A -->
+      </class> <!-- com.hm.tmf.kraios.WorkFlowAuditLogTest -->
     </classes>
   </test> <!-- CultureKing(failed) -->
 </suite> <!-- Failed suite [Open Cart Test Regression PW Suite] -->

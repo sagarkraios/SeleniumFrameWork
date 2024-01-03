@@ -64,9 +64,6 @@ public class ExcelUtils {
 					hashtable.put(sheet.getRow(0).getCell(j).getStringCellValue(), row.getCell(j).getStringCellValue());
 				} else {
 
-					System.out.println(j);
-					
-					System.out.println(sheet.getRow(0).getCell(j).getStringCellValue());
 					hashtable.put(sheet.getRow(0).getCell(j).getStringCellValue(),
 							row.getCell(j).getNumericCellValue());
 				}

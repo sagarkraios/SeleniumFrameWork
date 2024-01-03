@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.hm.tmf.SeleniumAutomation</groupId>
 	<artifactId>SeleniumAutomationTestNG</artifactId>
-	<version>1.0.5-SNAPSHOT</version>
+	<version>1.0.2-SNAPSHOT</version>
 
 	<dependencies>
 		<dependency>
@@ -34,13 +34,6 @@
 			<version>2.9.8</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.18.24</version>
-			<scope>provided</scope>
-		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>

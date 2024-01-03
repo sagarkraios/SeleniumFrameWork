@@ -1,91 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="0" skipped="1">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-12-14T09:42:14Z" name="Open Cart Test Regression PW Suite" finished-at="2023-12-14T09:44:20Z" duration-ms="125748">
+  <suite started-at="2023-12-14T09:24:29Z" name="Default suite" finished-at="2023-12-14T09:24:29Z" duration-ms="82">
     <groups>
     </groups>
-    <test started-at="2023-12-14T09:42:14Z" name="CultureKing" finished-at="2023-12-14T09:44:20Z" duration-ms="125748">
+    <test started-at="2023-12-14T09:24:29Z" name="Default test" finished-at="2023-12-14T09:24:29Z" duration-ms="82">
       <class name="A">
-        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:A@273e7444]" started-at="2023-12-14T09:42:15Z" name="setup" finished-at="2023-12-14T09:42:34Z" duration-ms="19364" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="name(java.util.Hashtable)[pri:0, instance:A@273e7444]" started-at="2023-12-14T09:42:34Z" name="name" data-provider="Data" finished-at="2023-12-14T09:43:06Z" duration-ms="31658" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{URL=https://qa.kraios.tmf-group.com/login?id_token=eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzYXRpc2h2bWFuanVuYXRoQGdtYWlsLmNvbSIsImlzcyI6Im9uZXRtZi1nYWx2YW5pemUiLCJleHAiOjE5Mjc1NDE5MTAsImlhdCI6MTY1NjUwNTExMCwiZW1haWwiOiJzYXRpc2h2bWFuanVuYXRoQGdtYWlsLmNvbSJ9.YTU-6TmFtcLqcUbmIPSfMu4sBUHBzTPjDdnsT0MzbYYQFxJNYyAgX3EYkuH-8I3LzY9x6YrNtGi1_G1Mq7ShLnKC6o2TQ1k_iHtuGKffQl3IWvo20JqNScOCHYq6K1HIpX1pl4H_jqI6l6H7qO9eDmMLu5vwkTHbpI7bg_zWSr3A1qI5U7kdLPWuN7Pcnse_1_tD11cPlBCRV9I5Z3295nUlwaXkdfRhkLfFJPJYkA2Si7E-4l_Osh4QUscunkYavDn7Vbh75P3XigwuCqOiOwqeroSpXAO_JBHChRUNnlCPFquwtFdZ82o7fH5p9eKwpPQ-9rb1Gesf61OtiJbnKg, UserID=Satish}]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- name -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:A@273e7444]" started-at="2023-12-14T09:43:06Z" name="tearDown" finished-at="2023-12-14T09:43:06Z" duration-ms="98" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:A@273e7444]" started-at="2023-12-14T09:43:06Z" name="setup" finished-at="2023-12-14T09:43:10Z" duration-ms="3437" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="name(java.util.Hashtable)[pri:0, instance:A@273e7444]" started-at="2023-12-14T09:43:10Z" name="name" data-provider="Data" finished-at="2023-12-14T09:43:41Z" duration-ms="30760" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{URL=https://qa.kraios.tmf-group.com/login?id_token=eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzYXRpc2h2bWFuanVuYXRoQGdtYWlsLmNvbSIsImlzcyI6Im9uZXRtZi1nYWx2YW5pemUiLCJleHAiOjE5Mjc1NDE5MTAsImlhdCI6MTY1NjUwNTExMCwiZW1haWwiOiJzYXRpc2h2bWFuanVuYXRoQGdtYWlsLmNvbSJ9.YTU-6TmFtcLqcUbmIPSfMu4sBUHBzTPjDdnsT0MzbYYQFxJNYyAgX3EYkuH-8I3LzY9x6YrNtGi1_G1Mq7ShLnKC6o2TQ1k_iHtuGKffQl3IWvo20JqNScOCHYq6K1HIpX1pl4H_jqI6l6H7qO9eDmMLu5vwkTHbpI7bg_zWSr3A1qI5U7kdLPWuN7Pcnse_1_tD11cPlBCRV9I5Z3295nUlwaXkdfRhkLfFJPJYkA2Si7E-4l_Osh4QUscunkYavDn7Vbh75P3XigwuCqOiOwqeroSpXAO_JBHChRUNnlCPFquwtFdZ82o7fH5p9eKwpPQ-9rb1Gesf61OtiJbnKg, UserID=Satish}]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- name -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:A@273e7444]" started-at="2023-12-14T09:43:42Z" name="tearDown" finished-at="2023-12-14T09:43:44Z" duration-ms="2146" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:A@273e7444]" started-at="2023-12-14T09:43:44Z" name="setup" finished-at="2023-12-14T09:43:49Z" duration-ms="4986" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="name(java.util.Hashtable)[pri:0, instance:A@273e7444]" started-at="2023-12-14T09:43:49Z" name="name" data-provider="Data" finished-at="2023-12-14T09:44:20Z" duration-ms="30481" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{URL=https://qa.kraios.tmf-group.com/login?id_token=eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzYXRpc2h2bWFuanVuYXRoQGdtYWlsLmNvbSIsImlzcyI6Im9uZXRtZi1nYWx2YW5pemUiLCJleHAiOjE5Mjc1NDE5MTAsImlhdCI6MTY1NjUwNTExMCwiZW1haWwiOiJzYXRpc2h2bWFuanVuYXRoQGdtYWlsLmNvbSJ9.YTU-6TmFtcLqcUbmIPSfMu4sBUHBzTPjDdnsT0MzbYYQFxJNYyAgX3EYkuH-8I3LzY9x6YrNtGi1_G1Mq7ShLnKC6o2TQ1k_iHtuGKffQl3IWvo20JqNScOCHYq6K1HIpX1pl4H_jqI6l6H7qO9eDmMLu5vwkTHbpI7bg_zWSr3A1qI5U7kdLPWuN7Pcnse_1_tD11cPlBCRV9I5Z3295nUlwaXkdfRhkLfFJPJYkA2Si7E-4l_Osh4QUscunkYavDn7Vbh75P3XigwuCqOiOwqeroSpXAO_JBHChRUNnlCPFquwtFdZ82o7fH5p9eKwpPQ-9rb1Gesf61OtiJbnKg, UserID=Satish}]]>
-              </value>
-            </param>
-          </params>
+        <test-method signature="name(java.util.Hashtable)[pri:0, instance:A@7f0d96f2]" started-at="2023-12-14T09:24:29Z" name="name" data-provider="Data" finished-at="2023-12-14T09:24:29Z" duration-ms="0" status="SKIP">
+          <exception class="java.lang.RuntimeException">
+            <message>
+              <![CDATA[java.lang.NullPointerException]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.RuntimeException: java.lang.NullPointerException
+at org.testng.internal.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:49)
+at org.testng.internal.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:131)
+at org.testng.internal.Parameters.handleParameters(Parameters.java:706)
+at org.testng.internal.ParameterHandler.handleParameters(ParameterHandler.java:49)
+at org.testng.internal.ParameterHandler.createParameters(ParameterHandler.java:37)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:924)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: java.lang.NullPointerException
+at com.hm.seleniumFactory.SeleniumWrapper.getProperties(SeleniumWrapper.java:820)
+at com.hm.utilities.DataUtil.sendData(DataUtil.java:21)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:74)
+at org.testng.internal.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:45)
+... 22 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.RuntimeException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- name -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:A@273e7444]" started-at="2023-12-14T09:44:20Z" name="tearDown" finished-at="2023-12-14T09:44:20Z" duration-ms="77" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:A@7f0d96f2]" started-at="2023-12-14T09:24:29Z" name="tearDown" finished-at="2023-12-14T09:24:29Z" duration-ms="11" status="FAIL">
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+at com.hm.seleniumFactory.SeleniumWrapper.closeBrowser(SeleniumWrapper.java:839)
+at com.hm.seleniumFactory.BaseTest.tearDown(BaseTest.java:67)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:458)
+at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+at org.testng.internal.TestMethodWorker.invokeAfterClassMethods(TestMethodWorker.java:214)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- A -->
-    </test> <!-- CultureKing -->
-  </suite> <!-- Open Cart Test Regression PW Suite -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>
