@@ -70,7 +70,7 @@ public class SeleniumWrapper {
 		new WebDriverWait(getlocalDriver(), Duration.ofSeconds(15)).until(webDriver -> ((JavascriptExecutor) webDriver)
 				.executeScript("return document.readyState").equals("complete"));
 
-		ExtentReportListener.test.get().info("SuccesFully Page >>" + pageName + "<< is opened ",
+		BaseTest.logger.get().info("SuccesFully Page >>" + pageName + "<< is opened ",
 				MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot()).build());
 
 	}
@@ -99,8 +99,7 @@ public class SeleniumWrapper {
 			element = waitForElement((By) locator, Strategy);
 		} else {
 
-			wait(5000);
-			element = getLocatorJs((String) locator);
+			element = waitForElement((String) locator, Strategy, timeOut);
 
 		}
 		return element;
@@ -185,6 +184,30 @@ public class SeleniumWrapper {
 
 	}
 
+	public static synchronized WebElement waitForElement(String locator, WaitStrategy Strategy, int timeOut) {
+
+		WebElement result = null;
+
+		switch (Strategy) {
+		case CLICKABLE:
+
+			result = new WebDriverWait(localDriver.get(), Duration.ofSeconds(timeOut))
+					.until(ExpectedConditions.elementToBeClickable(getWebElement(locator)));
+			break;
+		case VISIBLE:
+			result = new WebDriverWait(localDriver.get(), Duration.ofSeconds(timeOut))
+					.until(ExpectedConditions.visibilityOf(getWebElement(locator)));
+			break;
+
+		default:
+			result = getLocatorJs((String) locator);
+			break;
+		}
+
+		return result;
+
+	}
+
 	public static synchronized WebElement waitForElement(WebElement locator, WaitStrategy Strategy) {
 
 		WebElement result = null;
@@ -218,7 +241,7 @@ public class SeleniumWrapper {
 
 			highLightWebElementInScreenSchot(element, locatorName);
 
-			ExtentReportListener.test.get().info("Clicking onElement -->" + locatorName,
+			BaseTest.logger.get().info("Clicking onElement -->" + locatorName,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 
 			element.click();
@@ -231,7 +254,7 @@ public class SeleniumWrapper {
 			scrollToElement(locator, locatorName);
 			highLightWebElementInScreenSchot(element, locatorName);
 
-			ExtentReportListener.test.get().info("Clicking onElement -->" + locatorName,
+			BaseTest.logger.get().info("Clicking onElement -->" + locatorName,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 
 			element.click();
@@ -297,7 +320,7 @@ public class SeleniumWrapper {
 
 			highLightWebElementInScreenSchot(element, locatorName);
 			element.clear();
-			ExtentReportListener.test.get().info("Clearing Text in Element -->" + locatorName,
+			BaseTest.logger.get().info("Clearing Text in Element -->" + locatorName,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 
 			unHighLightWebElementInScreenSchot(element);
@@ -310,7 +333,7 @@ public class SeleniumWrapper {
 
 			element.clear();
 
-			ExtentReportListener.test.get().info("Clearing Text in Element -->" + locatorName,
+			BaseTest.logger.get().info("Clearing Text in Element -->" + locatorName,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 			unHighLightWebElementInScreenSchot(element);
 		}
@@ -329,8 +352,7 @@ public class SeleniumWrapper {
 
 			select.selectByVisibleText(value);
 
-			ExtentReportListener.test.get().info(
-					"SelectingValue from Selector" + locatorName + " and selectedValue is " + value,
+			BaseTest.logger.get().info("SelectingValue from Selector" + locatorName + " and selectedValue is " + value,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 
 			unHighLightWebElementInScreenSchot(element);
@@ -345,8 +367,7 @@ public class SeleniumWrapper {
 
 			select.selectByVisibleText(value);
 
-			ExtentReportListener.test.get().info(
-					"SelectingValue from Selector" + locatorName + " and selectedValue is " + value,
+			BaseTest.logger.get().info("SelectingValue from Selector" + locatorName + " and selectedValue is " + value,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 
 			unHighLightWebElementInScreenSchot(element);
@@ -367,8 +388,7 @@ public class SeleniumWrapper {
 
 			select.selectByValue(value);
 
-			ExtentReportListener.test.get().info(
-					"SelectingValue from Selector" + locatorName + " and selectedValue is " + value,
+			BaseTest.logger.get().info("SelectingValue from Selector" + locatorName + " and selectedValue is " + value,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 
 			unHighLightWebElementInScreenSchot(element);
@@ -383,8 +403,7 @@ public class SeleniumWrapper {
 
 			select.selectByValue(value);
 
-			ExtentReportListener.test.get().info(
-					"SelectingValue from Selector" + locatorName + " and selectedValue is " + value,
+			BaseTest.logger.get().info("SelectingValue from Selector" + locatorName + " and selectedValue is " + value,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 
 			unHighLightWebElementInScreenSchot(element);
@@ -405,8 +424,7 @@ public class SeleniumWrapper {
 
 			select.selectByIndex(value);
 
-			ExtentReportListener.test.get().info(
-					"SelectingValue from Selector" + locatorName + " and selectedValue is " + value,
+			BaseTest.logger.get().info("SelectingValue from Selector" + locatorName + " and selectedValue is " + value,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 
 			unHighLightWebElementInScreenSchot(element);
@@ -421,8 +439,7 @@ public class SeleniumWrapper {
 
 			select.selectByIndex(value);
 
-			ExtentReportListener.test.get().info(
-					"SelectingValue from Selector" + locatorName + " and selectedValue is " + value,
+			BaseTest.logger.get().info("SelectingValue from Selector" + locatorName + " and selectedValue is " + value,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 
 			unHighLightWebElementInScreenSchot(element);
@@ -497,8 +514,7 @@ public class SeleniumWrapper {
 			element.sendKeys(value);
 			highLightWebElementInScreenSchot(element, locatorName);
 
-			ExtentReportListener.test.get().info(
-					"Entered text to Element -->" + locatorName + " enteredValue is ==>" + value,
+			BaseTest.logger.get().info("Entered text to Element -->" + locatorName + " enteredValue is ==>" + value,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 
 			unHighLightWebElementInScreenSchot(element);
@@ -514,8 +530,7 @@ public class SeleniumWrapper {
 				enterValueByJs(element, value, locatorName);
 			}
 
-			ExtentReportListener.test.get().info(
-					"Entered text to Element -->" + locatorName + " enteredValue is ==>" + value,
+			BaseTest.logger.get().info("Entered text to Element -->" + locatorName + " enteredValue is ==>" + value,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 
 			unHighLightWebElementInScreenSchot(element);
@@ -533,8 +548,7 @@ public class SeleniumWrapper {
 
 			highLightWebElementInScreenSchot(element, locatorName);
 
-			ExtentReportListener.test.get().info(
-					"Entered text to Element -->" + locatorName + " enteredValue is ==>" + value,
+			BaseTest.logger.get().info("Entered text to Element -->" + locatorName + " enteredValue is ==>" + value,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 
 			unHighLightWebElementInScreenSchot(element);
@@ -547,12 +561,28 @@ public class SeleniumWrapper {
 
 			highLightWebElementInScreenSchot(element, locatorName);
 
-			ExtentReportListener.test.get().info(
-					"Entered text to Element -->" + locatorName + " enteredValue is ==>" + value,
+			BaseTest.logger.get().info("Entered text to Element -->" + locatorName + " enteredValue is ==>" + value,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 
 			unHighLightWebElementInScreenSchot(element);
 		}
+
+	}
+
+	public static WebElement getWebElement(String locator) {
+
+		WebElement element = null;
+		if (locator.startsWith("//")) {
+			element = getlocalDriver().findElement(By.xpath(locator));
+		} else if (locator.startsWith("id")) {
+			element = getlocalDriver().findElement(By.id(locator));
+
+		} else if (locator.startsWith("class")) {
+			element = getlocalDriver().findElement(By.className(locator));
+		} else if (locator.startsWith("css")) {
+			element = getlocalDriver().findElement(By.cssSelector(locator));
+		}
+		return element;
 
 	}
 
@@ -567,8 +597,7 @@ public class SeleniumWrapper {
 
 			executor.get().executeScript("arguments[0].valueAsNumber='" + value + "'", element);
 
-			ExtentReportListener.test.get().info(
-					"Entered text to Element -->" + locatorName + " enteredValue is ==>" + value,
+			BaseTest.logger.get().info("Entered text to Element -->" + locatorName + " enteredValue is ==>" + value,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 
 			unHighLightWebElementInScreenSchot(element);
@@ -581,8 +610,7 @@ public class SeleniumWrapper {
 
 			executor.get().executeScript("arguments[0].valueAsNumber='" + value + "'", element);
 
-			ExtentReportListener.test.get().info(
-					"Entered text to Element -->" + locatorName + " enteredValue is ==>" + value,
+			BaseTest.logger.get().info("Entered text to Element -->" + locatorName + " enteredValue is ==>" + value,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 
 			unHighLightWebElementInScreenSchot(element);
@@ -592,9 +620,11 @@ public class SeleniumWrapper {
 
 	public static synchronized WebElement getLocatorJs(String locator) {
 
-		System.out.println("var element=document.evaluate(\"" + locator
-				+ "\", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null).snapshotItem(0); return element;");
-
+		/*
+		 * System.out.println("var element=document.evaluate(\"" + locator +
+		 * "\", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null).snapshotItem(0); return element;"
+		 * );
+		 */
 		return (WebElement) executor.get().executeScript("var element=document.evaluate(\"" + locator
 				+ "\", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null).snapshotItem(0); return element;");
 
@@ -608,7 +638,7 @@ public class SeleniumWrapper {
 
 			highLightWebElementInScreenSchot(element, locatorName);
 
-			ExtentReportListener.test.get().info("Clicking onElement -->" + locatorName,
+			BaseTest.logger.get().info("Clicking onElement -->" + locatorName,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 
 			executor.get().executeScript("arguments[0].click();", element);
@@ -622,7 +652,7 @@ public class SeleniumWrapper {
 
 			highLightWebElementInScreenSchot(element, locatorName);
 
-			ExtentReportListener.test.get().info("Clicking onElement -->" + locatorName,
+			BaseTest.logger.get().info("Clicking onElement -->" + locatorName,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 
 			executor.get().executeScript("arguments[0].click();", element);
@@ -637,7 +667,7 @@ public class SeleniumWrapper {
 		executor.get().executeScript("arguments[0].scrollIntoView();", element);
 		wait(2000);
 		highLightWebElementInScreenSchot(element, locatorName);
-		ExtentReportListener.test.get().info("Clicking scrollingElemet -->" + locatorName,
+		BaseTest.logger.get().info("Clicking scrollingElemet -->" + locatorName,
 				MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 		unHighLightWebElementInScreenSchot(element);
 
@@ -654,7 +684,7 @@ public class SeleniumWrapper {
 				savedValue = element.getAttribute("placeholder");
 			}
 		}
-		ExtentReportListener.test.get().info("Saving value from Locator -->" + locatorName,
+		BaseTest.logger.get().info("Saving value from Locator -->" + locatorName,
 				MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 		unHighLightWebElementInScreenSchot(element);
 		return savedValue;
@@ -697,12 +727,12 @@ public class SeleniumWrapper {
 
 			result = true;
 			highLightWebElementInScreenSchot(element, locatorName);
-			ExtentReportListener.test.get().info("Given Element is Visble -->" + locatorName,
+			BaseTest.logger.get().pass("Given Element is Visble -->" + locatorName,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 
 		} catch (Exception e) {
 
-			ExtentReportListener.test.get().info("Given Element is  Not Visble -->" + locatorName,
+			BaseTest.logger.get().fail("Given Element is  Not Visble -->" + locatorName,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 		}
 
@@ -719,18 +749,17 @@ public class SeleniumWrapper {
 			WebElement element = webElementManger(locator, WaitStrategy.VISIBLE, 10);
 
 			if (element == null) {
-				ExtentReportListener.test.get()
-						.pass("Given Element is  Not Visble and Step is Passed -->" + locatorName);
+				BaseTest.logger.get().pass("Given Element is  Not Visble and Step is Passed -->" + locatorName);
 				result = true;
 			} else {
-				ExtentReportListener.test.get().fail(
+				BaseTest.logger.get().fail(
 						"Given Element is Should not be Visble but the Element is Visble hence failing the  Step -->"
 								+ locatorName);
 
 			}
 
 		} catch (Exception e) {
-			ExtentReportListener.test.get().pass("Given Element is  Not Visble and Step is Passed -->" + locatorName);
+			BaseTest.logger.get().pass("Given Element is  Not Visble and Step is Passed -->" + locatorName);
 			result = true;
 		}
 
@@ -743,7 +772,7 @@ public class SeleniumWrapper {
 		WebElement element = webElementManger(locatorName, WaitStrategy.CLICKABLE);
 		highLightWebElementInScreenSchot(element, locatorName);
 
-		ExtentReportListener.test.get().info("Clicking onElement -->" + locatorName,
+		BaseTest.logger.get().info("Clicking onElement -->" + locatorName,
 				MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 
 		actions.get().doubleClick().perform();
@@ -757,7 +786,7 @@ public class SeleniumWrapper {
 		WebElement element = webElementManger(locatorName, WaitStrategy.CLICKABLE);
 		highLightWebElementInScreenSchot(element, locatorName);
 
-		ExtentReportListener.test.get().info("Clicking onElement -->" + locatorName,
+		BaseTest.logger.get().info("Clicking onElement -->" + locatorName,
 				MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), locatorName).build());
 
 		actions.get().contextClick().perform();
@@ -771,25 +800,22 @@ public class SeleniumWrapper {
 		switch (browserName.toLowerCase()) {
 		case "chrome":
 			ChromeOptions option = new ChromeOptions();
+			option.addArguments("--remote-allow-origins=*");
 			option.addArguments("incognito");
-			/*
-			 * LoggingPreferences logPrefs = new LoggingPreferences();
-			 * logPrefs.enable(LogType.PERFORMANCE, Level.ALL);
-			 * option.setCapability(ChromeOptions.LOGGING_PREFS, logPrefs);
-			 */
+			option.addArguments("--remote-allow-origins=*");
 			if (SeleniumWrapper.getProperties("headless").equalsIgnoreCase("true")) {
-				option.addArguments("headless");
+				option.addArguments("--headless=chrome");
 			}
-			;
+
 			if (SeleniumWrapper.getProperties("executionMode").equalsIgnoreCase("local")) {
-				driver = new ChromeDriver(option);
-			} else {
 				try {
 					driver = new RemoteWebDriver(new URL(SeleniumWrapper.getProperties("hubUrl")), option);
 				} catch (MalformedURLException e) {
-
-					System.out.println("Issue in connecting to Remote WebDriver");
+					System.out.println("Issue with Remote WebDrver Intialisation");
+					e.printStackTrace();
 				}
+			} else {
+				driver = new ChromeDriver(option);
 			}
 
 			localDriver.set(driver);
@@ -803,9 +829,6 @@ public class SeleniumWrapper {
 		case "edge":
 			EdgeOptions edgeOptions = new EdgeOptions();
 			edgeOptions.addArguments("-inprivate");
-			if (SeleniumWrapper.getProperties("headless").equalsIgnoreCase("true")) {
-				edgeOptions.addArguments("headless");
-			}
 			driver = new EdgeDriver(edgeOptions);
 			localDriver.set(driver);
 			break;
@@ -877,7 +900,7 @@ public class SeleniumWrapper {
 
 	public static synchronized void closeBrowser() {
 
-		localDriver.get().close();
+		localDriver.get().quit();
 
 	}
 
@@ -885,7 +908,8 @@ public class SeleniumWrapper {
 
 		try {
 
-			executor.get().executeScript("arguments[0].setAttribute('style', 'border: 6px solid green;');", element);
+			// executor.get().executeScript("arguments[0].setAttribute('style', 'border: 6px
+			// solid green;');", element);
 
 		} catch (Exception e) {
 
@@ -897,7 +921,8 @@ public class SeleniumWrapper {
 
 		try {
 
-			executor.get().executeScript("arguments[0].setAttribute('style', 'border: 6px solid green;');", element);
+			// executor.get().executeScript("arguments[0].setAttribute('style', 'border: 6px
+			// solid green;');", element);
 
 		} catch (Exception e) {
 
@@ -908,7 +933,8 @@ public class SeleniumWrapper {
 	public static synchronized void unHighLightWebElementInScreenSchot(WebElement element) {
 
 		try {
-			executor.get().executeScript("arguments[0].setAttribute('style', 'border:');", element);
+			// executor.get().executeScript("arguments[0].setAttribute('style',
+			// 'border:');", element);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
